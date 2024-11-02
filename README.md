@@ -4,7 +4,10 @@ Simple python script with some functionality to test your skill on several examp
 
 # Change history
 
-## 2024-11-01 First Upload
+## (2) Bugfixes
+* (bug) when displaying wrong answers, only the last answer possibility was shown. This is fixed now.
+
+## (1) 2024-11-01 First Upload
 
 Functionalities include:
 * Reading in the file based on the configuration in the script

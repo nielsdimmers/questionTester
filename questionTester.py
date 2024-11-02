@@ -5,12 +5,12 @@ import sys
 import random
 import textwrap
 
-file_path = 'PSM I Prep Questions.md'
-# file_path = 'PSM II Prep Questions.md'
+# file_path = 'PSM I Prep Questions.md'
+file_path = 'PSM II Prep Questions.md'
 # file_path = 'PSPO I Prep Questions.md'
 # file_path = 'PSD I Prep Questions.md'
 
-number_of_questions = 15
+number_of_questions = 2
 
 def clear():
 
@@ -36,7 +36,7 @@ def show_results():
 	for question in wrong_question_list:
 		safe_print(f'- ({question["number"]}) {question["question"]}')
 		safe_print(f'      given answer: {question["given_answer"]}    correct answer: {question["correct_answer"]}')
-		safe_print(f'Answer choices: \n{question["answers"]}')
+		print(f'Answer choices: \n{question["answers"]}')
 
 def signal_handler(sig, frame):
 	show_results()
@@ -89,12 +89,14 @@ while question_counter < number_of_questions:
 	
 	answer_list = questions_dict.pop(question)
 	answer_string = ''
+	all_answers = ''
 	
 	for answer in answer_list:
 		answer_string = f'{alphabet[iterator]}) {answer["answer"]}\n'	
 		if answer['result'] == 'correct':
 			correct_answer += alphabet[iterator]
 		iterator += 1
+		all_answers += answer_string
 		safe_print(answer_string)
 	
 	guess = input()
@@ -103,7 +105,7 @@ while question_counter < number_of_questions:
 	if guess == correct_answer:
 		correct_questions+=1
 	else:
-		wrong_question_list.append({'question':question,'given_answer':guess,'correct_answer':correct_answer,'answers':answer_string,'number':question_counter+1})
+		wrong_question_list.append({'question':question,'given_answer':guess,'correct_answer':correct_answer,'answers':all_answers,'number':question_counter+1})
 	
 	question_counter += 1
 
